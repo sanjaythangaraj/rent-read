@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:17.2'
+    environment:
+      - 'POSTGRES_DB=rent-read'
+      - 'POSTGRES_PASSWORD=rent-read'
+      - 'POSTGRES_USER=rent-read'
+    ports:
+      - '5432:5432'

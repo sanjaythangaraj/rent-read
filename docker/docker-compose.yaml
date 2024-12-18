@@ -1,0 +1,21 @@
+services:
+  app:
+    image: noozecrypt/rent-read:1.0.0
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/rent-read
+      SPRING_DATASOURCE_USERNAME: rent-read
+      SPRING_DATASOURCE_PASSWORD: rent-read
+      SPRING_DOCKER_COMPOSE_ENABLED: false
+    depends_on:
+      - db
+
+  db:
+    image: postgres:17.2
+    environment:
+      POSTGRES_DB: rent-read
+      POSTGRES_USER: rent-read
+      POSTGRES_PASSWORD: rent-read
+    ports:
+      - "5432:5432"
