@@ -22,14 +22,17 @@ import java.util.Optional;
 @Service
 public class CustomerService {
 
-  @Autowired
   private CustomerRepository customerRepository;
 
-  @Autowired
   private AuthorityRepository authorityRepository;
 
-  @Autowired
   private ModelMapper modelMapper;
+
+  public CustomerService(CustomerRepository customerRepository, AuthorityRepository authorityRepository, ModelMapper modelMapper) {
+    this.customerRepository = customerRepository;
+    this.authorityRepository = authorityRepository;
+    this.modelMapper = modelMapper;
+  }
 
   public List<CustomerResponse> findAll() {
     return customerRepository.findAll().stream()

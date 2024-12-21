@@ -19,14 +19,17 @@ import java.util.List;
 @Service
 public class BookService {
 
-  @Autowired
   private BookRepository bookRepository;
 
-  @Autowired
+  private CustomerRepository customerRepository;
+
   private ModelMapper modelMapper;
 
-  @Autowired
-  private CustomerRepository customerRepository;
+  public BookService(BookRepository bookRepository, CustomerRepository customerRepository, ModelMapper modelMapper) {
+    this.bookRepository = bookRepository;
+    this.customerRepository = customerRepository;
+    this.modelMapper = modelMapper;
+  }
 
   public List<BookResponse> findAll() {
     List<BookEntity> bookEntities = bookRepository.findAll();
