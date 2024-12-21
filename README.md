@@ -17,3 +17,9 @@ The API documentation can be viewed at the following link: [API Documentation](h
 cd docker
 docker-compose up
 ```
+
+## Setup (Build and Run)
+
+```sh
+.\mvnw spring-boot:run
+```

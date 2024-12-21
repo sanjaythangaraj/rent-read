@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>rent-read</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>rent-read</name>
 	<description>Spring Web Basic Auth Demo</description>
 	<url/>
@@ -111,12 +111,34 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<environmentVariables>
+						<SPRING_DATASOURCE_URL>jdbc:postgresql://localhost:5432/rent-read</SPRING_DATASOURCE_URL>
+						<SPRING_DATASOURCE_USERNAME>rent-read</SPRING_DATASOURCE_USERNAME>
+						<SPRING_DATASOURCE_PASSWORD>rent-read</SPRING_DATASOURCE_PASSWORD>
+						<SPRING_DOCKER_COMPOSE_ENABLED>true</SPRING_DOCKER_COMPOSE_ENABLED>
+					</environmentVariables>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.4.4</version>
+				<configuration>
+					<from>
+						<image>openjdk:21-jdk-slim-bullseye</image>
+					</from>
+					<to>
+						<image>noozecrypt/rent-read</image>
+						<tags>
+							<tag>${project.version}</tag>
+						</tags>
+					</to>
 				</configuration>
 			</plugin>
 		</plugins>
